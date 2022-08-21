@@ -10,7 +10,6 @@ import logging
 from logging import Formatter, FileHandler
 from flask import Flask
 from flask_moment import Moment
-from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from models import *
 
@@ -21,7 +20,7 @@ from models import *
 app = Flask(__name__)
 moment = Moment(app)
 app.config.from_object('config')
-db = SQLAlchemy(app)
+db.init_app(app)
 migrate = Migrate(app, db)
 
 
