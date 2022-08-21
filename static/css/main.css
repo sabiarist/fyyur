@@ -115,13 +115,31 @@ ul.items {
 
 ul.items > li > a {
     margin-bottom: 15px;
-    display: flex;
+    display: inline-block;
     color: initial;
     text-decoration: initial;
 }
 
+ul.items > li > a:first-child {
+    width: 50%;
+}
+
 ul.items > li > a > i {
     padding: 7px 10px 0;
+}
+
+ul.items > li > a:last-child {
+    color: red;
+    background-color: transparent;
+    box-sizing: border-box;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+ul.items > li > a:last-child:hover {
+    color: orange;
+    cursor: pointer;
 }
 
 ul.items > li:hover {
@@ -136,6 +154,7 @@ ul.items > li:hover h5 {
 .item {
     padding: 5px 5px 5px;
     flex: 1;
+    /*display: inline-block;*/
 }
 
 .item h5 {
@@ -244,3 +263,4 @@ h2.monospace {
 .subtitle {
     opacity: 0.5;
 }
+

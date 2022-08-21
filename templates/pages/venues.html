@@ -1,19 +1,22 @@
 {% extends 'layouts/main.html' %}
 {% block title %}Fyyur | Venues{% endblock %}
 {% block content %}
-{% for area in areas %}
-<h3>{{ area.city }}, {{ area.state }}</h3>
-	<ul class="items">
-		{% for venue in area.venues %}
-		<li>
-			<a href="/venues/{{ venue.id }}">
-				<i class="fas fa-music"></i>
-				<div class="item">
-					<h5>{{ venue.name }}</h5>
-				</div>
-			</a>
-		</li>
-		{% endfor %}
-	</ul>
-{% endfor %}
+    {% for area in areas %}
+        <h3>{{ area.city }}, {{ area.state }}</h3>
+        <ul class="items">
+            {% for venue in area.venues %}
+                <li>
+                    <a href="/venues/{{ venue.id }}">
+                        <i class="fas fa-music"></i>
+                        <label class="item">
+                            <h5>{{ venue.name }}</h5>
+                        </label>
+                    </a>
+                    <a onclick="fetch('/venues/{{ venue.id }}/delete',{method: 'DELETE'}).then(function () {window.location.reload()})">
+                        &#10006;
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
 {% endblock %}

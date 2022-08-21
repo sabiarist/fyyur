@@ -1,16 +1,19 @@
 {% extends 'layouts/main.html' %}
 {% block title %}Fyyur | Artists{% endblock %}
 {% block content %}
-<ul class="items">
-	{% for artist in artists %}
-	<li>
-		<a href="/artists/{{ artist.id }}">
-			<i class="fas fa-users"></i>
-			<div class="item">
-				<h5>{{ artist.name }}</h5>
-			</div>
-		</a>
-	</li>
-	{% endfor %}
-</ul>
+    <ul class="items">
+        {% for artist in artists %}
+            <li>
+                <a href="/artists/{{ artist.id }}" class="art">
+                    <i class="fas fa-users"></i>
+                    <label class="item">
+                        <h5>{{ artist.name }}</h5>
+                    </label>
+                </a>
+                <a onclick="fetch('/artists/{{ artist.id }}/delete',{method: 'DELETE'}).then(function () {window.location.reload()})">
+                    &#10006;
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
 {% endblock %}
